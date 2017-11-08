@@ -3,12 +3,12 @@
 # Matric No.    : 40298561
 ########################################
 
+from global_vars import *
 import time
 import re
 from colorama import Fore, Style, Back, init
 import board as Board
 import piece as Piece
-from global_vars import *
 
 def clear():
     '''Clears the window by printing 30 blank lines'''
@@ -52,6 +52,7 @@ def print_error(msg):
 
 
 def play_pvp():
+    global white_turn
     coordinates_re = re.compile(r'^(?:[a-hA-H]{1})(?:[0-7]){1}$', flags=re.IGNORECASE) # Check for valid coordinates using regular expressions (aka regex)
 
     finished = False
@@ -89,7 +90,8 @@ def play_pvp():
                     yDest = INDEX[destination_coordinates[0].upper()]
                     break
         # TODO: Check if it's a legal move before moving
-        Piece.move(xOrigin, yOrigin, xDest, yDest)
+        if Piece.move(xOrigin, yOrigin, xDest, yDest):
+            white_turn = not white_turn # Hand over tunr to other team
 
 
 def play_ai():
