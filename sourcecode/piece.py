@@ -12,3 +12,18 @@ def isValid(xOrigin, yOrigin):
         return True
     else:
         return False
+def checkOwner(x, y):
+    if game_board[y][x] == "X": # IF red team
+        return "RED"
+    elif game_board[y][x] == "O": # IF white team
+        return "WHITE"
+    else:
+        return None
+
+def printCoords(x, y):
+    to_print = ""
+    for key, value in INDEX.iteritems():
+            if value == y:
+                to_print += str(key)
+    to_print += str(x)
+    print(to_print)
