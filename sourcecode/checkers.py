@@ -64,7 +64,7 @@ def play_pvp():
             else:
                 xOrigin = int(origin_coordinates[1])
                 yOrigin = INDEX[origin_coordinates[0].upper()]
-                if Piece.isValid(xOrigin, yOrigin):
+                if Piece.exists(xOrigin, yOrigin):
                     if (Piece.checkOwner(xOrigin, yOrigin) == "WHITE") and not white_turn or (Piece.checkOwner(xOrigin, yOrigin) == "RED") and white_turn: # Check if moving the correct teams piece
                         print_error("Error. You can only move a piece that belongs to you.")
                     else:

@@ -27,7 +27,7 @@ def move(xOrigin, yOrigin, xDest, yDest):
 
     # TODO: Implement piece movement
 
-def isValid(xOrigin, yOrigin):
+def exists(xOrigin, yOrigin):
     if game_board[yOrigin][xOrigin] is not " ": # Check if piece exists in the origin coordinates
         return True
     else:
