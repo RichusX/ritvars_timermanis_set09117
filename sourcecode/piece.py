@@ -9,6 +9,24 @@ def move(xOrigin, yOrigin, xDest, yDest):
     piece = game_board[xOrigin][yOrigin] # get the piece from origin
     game_board[xOrigin][yOrigin] = " " # set the origin to none
     game_board[xDest][yDest] = piece # set the destination to piece
+    ''' '''
+    if abs(xOrigin - xDest) == 2 and abs(yOrigin - yDest) == 2: # if piece moves by 2 tiles
+        if (xOrigin > xDest) and (yOrigin > yDest): # IF jumping to TOP LEFT
+            piece_jumped = game_board[yDest + 1][xDest + 1] # xDest + 1 and yDest + 1
+            printCoords(xDest+1, yDest+1)
+        elif (xOrigin < xDest) and (yOrigin < yDest): # IF jumping to BOTTOM RIGHT
+            piece_jumped = game_board[yDest - 1][xDest - 1] # xDest - 1 and yDest - 1
+            printCoords(xDest-1, yDest-1)
+        elif (xOrigin > xDest) and (yOrigin < yDest): # IF jumping to BOTTOM LEFT
+            piece_jumped = game_board[yDest - 1][xDest +1] # xDest + 1 and yDest - 1
+            printCoords(xDest+1,yDest-1)
+        elif (xOrigin < xDest) and (yOrigin > yDest): # IF jumping to TOP RIGHT
+            piece_jumped = game_board[yDest + 1][xDest - 1] # xDest - 1 and yDest + 1
+            printCoords(xDest-1, yDest+1)
+        
+    piece = game_board[yOrigin][xOrigin] # get the piece from origin
+    game_board[yOrigin][xOrigin] = " " # set the origin to none
+    game_board[yDest][xDest] = piece # set the destination to piece
 
     # TODO: Implement piece movement
 
