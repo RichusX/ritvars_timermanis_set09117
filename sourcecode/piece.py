@@ -1,5 +1,10 @@
 from settings import *
 
+#
+#   REMEMBER! WHEN CALLING game_board, Y comes BEFORE X !!!
+#
+
+
 def move(xOrigin, yOrigin, xDest, yDest):
     piece = game_board[xOrigin][yOrigin] # get the piece from origin
     game_board[xOrigin][yOrigin] = " " # set the origin to none
