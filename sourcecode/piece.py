@@ -6,9 +6,6 @@ from settings import *
 
 
 def move(xOrigin, yOrigin, xDest, yDest):
-    piece = game_board[xOrigin][yOrigin] # get the piece from origin
-    game_board[xOrigin][yOrigin] = " " # set the origin to none
-    game_board[xDest][yDest] = piece # set the destination to piece
     ''' '''
     if abs(xOrigin - xDest) == 2 and abs(yOrigin - yDest) == 2: # if piece moves by 2 tiles
         if (xOrigin > xDest) and (yOrigin > yDest): # IF jumping to TOP LEFT
@@ -31,10 +28,11 @@ def move(xOrigin, yOrigin, xDest, yDest):
     # TODO: Implement piece movement
 
 def isValid(xOrigin, yOrigin):
-    if game_board[xOrigin][yOrigin] is not " ": # Check if piece exists in the origin coordinates
+    if game_board[yOrigin][xOrigin] is not " ": # Check if piece exists in the origin coordinates
         return True
     else:
         return False
+
 def checkOwner(x, y):
     if game_board[y][x] == "X": # IF red team
         return "RED"
