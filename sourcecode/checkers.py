@@ -47,6 +47,8 @@ def print_board():
     clear()
     Board.print_board()
 
+def print_error(msg):
+    print(Fore.WHITE + Back.RED + str(msg) + Style.RESET_ALL)
 
 
 def play_pvp():
@@ -58,23 +60,23 @@ def play_pvp():
         while True:
             origin_coordinates = raw_input("Enter the piece you want to move e.g. \"F2\"\n>>")
             if not re.match(coordinates_re, origin_coordinates):
-                print("Error! Invalid input.")
+                print_error("Error. Invalid input.")
             else:
                 xOrigin = int(origin_coordinates[1])
                 yOrigin = INDEX[origin_coordinates[0].upper()]
                 if Piece.isValid(xOrigin, yOrigin):
                     if (Piece.checkOwner(xOrigin, yOrigin) == "WHITE") and not white_turn or (Piece.checkOwner(xOrigin, yOrigin) == "RED") and white_turn: # Check if moving the correct teams piece
-                        print(Fore.RED + Back.WHITE + "Error. You can only move a piece that belongs to you." + Style.RESET_ALL)
+                        print_error("Error. You can only move a piece that belongs to you.")
                     else:
                         break
                 else:
-                    print("Error. Invalid piece selected.")
+                    print_error("Error. Invalid piece selected.")
         # TODO: check if the piece selected belongs to the player
 
         while True:
             destination_coordinates = raw_input("Enter the corrdinates for the tile you want to move the piece to\n>>")
             if not re.match(coordinates_re, destination_coordinates):
-                print("Error! Invalid input.")
+                print_error("Error! Invalid input.")
             else:
                 if destination_coordinates == origin_coordinates: # Make sure that both coordinates are actually different from each other
                     print("Destination coordinates need to be different than the origin coordinates!") 
@@ -105,5 +107,5 @@ if __name__ == "__main__":
         elif selection == "4":
             exit("Exiting...")
         else:
-            print "Invalid option. Please try again."
+            print_error("Invalid option. Please try again.")
             time.sleep(2)
