@@ -1,5 +1,5 @@
 from colorama import Style, Fore
-from global_vars import *
+import global_vars
 
 HEADER = '     0   1   2   3   4   5   6   7'
 FOOTER = '   +---+---+---+---+---+---+---+---+'
@@ -12,9 +12,9 @@ def print_board():
         to_print = chr(y + 97).upper() + '  '
         for x in range(0, 9):
             if x <= 7 and y <= 7:
-                if game_board[y][x] == "X":
+                if global_vars.game_board[y][x] == "X":
                     to_print += '| ' + Fore.RED + "O" + Fore.RESET + " "
-                elif game_board[y][x] == "O":
+                elif global_vars.game_board[y][x] == "O":
                     to_print += '| ' + Fore.WHITE + "O" + Fore.RESET + " "
                 else:
                     to_print += '|   '
