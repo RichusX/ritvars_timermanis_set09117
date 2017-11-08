@@ -6,6 +6,7 @@
 import time
 import re
 import colorama
+from colorama import Fore, Style, Back, init
 import board as Board
 import piece as Piece
 from settings import *
