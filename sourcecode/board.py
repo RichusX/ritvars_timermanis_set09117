@@ -1,8 +1,6 @@
 from colorama import Style, Fore, init
 from settings import *
 
-init(convert=True)
-
 header = '     0   1   2   3   4   5   6   7'
 footer = '   +---+---+---+---+---+---+---+---+'
 
