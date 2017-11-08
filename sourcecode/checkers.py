@@ -5,7 +5,6 @@
 
 import time
 import re
-import colorama
 from colorama import Fore, Style, Back, init
 import board as Board
 import piece as Piece
@@ -61,10 +60,13 @@ def play_pvp():
             if not re.match(coordinates_re, origin_coordinates):
                 print("Error! Invalid input.")
             else:
-                yOrigin = int(origin_coordinates[1])
-                xOrigin = INDEX[origin_coordinates[0].upper()]
+                xOrigin = int(origin_coordinates[1])
+                yOrigin = INDEX[origin_coordinates[0].upper()]
                 if Piece.isValid(xOrigin, yOrigin):
-                    break
+                    if (Piece.checkOwner(xOrigin, yOrigin) == "WHITE") and not white_turn or (Piece.checkOwner(xOrigin, yOrigin) == "RED") and white_turn: # Check if moving the correct teams piece
+                        print(Fore.RED + Back.WHITE + "Error. You can only move a piece that belongs to you." + Style.RESET_ALL)
+                    else:
+                        break
                 else:
                     print("Error. Invalid piece selected.")
         # TODO: check if the piece selected belongs to the player
@@ -77,10 +79,10 @@ def play_pvp():
                 if destination_coordinates == origin_coordinates: # Make sure that both coordinates are actually different from each other
                     print("Destination coordinates need to be different than the origin coordinates!") 
                 else:
-                    yDest = int(destination_coordinates[1])
-                    xDest = INDEX[destination_coordinates[0].upper()]
+                    xDest = int(destination_coordinates[1])
+                    yDest = INDEX[destination_coordinates[0].upper()]
                     break
-        # TODO: Check if it's a legal move
+        # TODO: Check if it's a legal move before moving
         Piece.move(xOrigin, yOrigin, xDest, yDest)
 
 
@@ -90,6 +92,7 @@ def play_ai():
 
 
 if __name__ == "__main__":
+    init(convert=True)
     while True:
         selection = main_menu()
         if selection == "1":
