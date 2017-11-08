@@ -3,7 +3,7 @@
 # Matric No.    : 40298561
 ########################################
 
-import global_vars
+import g # Global variables
 import time
 import re
 from colorama import Fore, Style, Back, init
@@ -21,7 +21,7 @@ def main_menu():
     while True:
         clear()
         print 20 * "-"
-        print "Checkers %s" % (global_vars.VERSION)
+        print "Checkers %s" % (g.VERSION)
         print 20 * "-"
         print " 1. Play\n" \
               " 2. Play with AI\n" \
@@ -34,7 +34,7 @@ def about_screen():
     '''Display about screen'''
     clear()
     print 20 * "-"
-    print "Checkers %s" % (global_vars.VERSION)
+    print "Checkers %s" % (g.VERSION)
     print 20 * "-"
     print "Developed by Ritvars Timermanis\n" \
           "Version 0.1\n" \
@@ -58,7 +58,7 @@ def play_pvp():
     while not finished:
         print_board()
         while True:
-            if global_vars.white_turn:
+            if g.white_turn:
                 piece_hint = Fore.WHITE + "O" + Style.RESET_ALL
             else:
                 piece_hint = Fore.RED + "O" + Style.RESET_ALL
@@ -68,9 +68,9 @@ def play_pvp():
                 print_error("Error. Invalid input.")
             else:
                 xOrigin = int(origin_coordinates[1])
-                yOrigin = global_vars.INDEX[origin_coordinates[0].upper()]
+                yOrigin = g.INDEX[origin_coordinates[0].upper()]
                 if Piece.exists(xOrigin, yOrigin):
-                    if (Piece.checkOwner(xOrigin, yOrigin) == "WHITE") and not global_vars.white_turn or (Piece.checkOwner(xOrigin, yOrigin) == "RED") and global_vars.white_turn: # Check if moving the correct teams piece
+                    if (Piece.checkOwner(xOrigin, yOrigin) == "WHITE") and not g.white_turn or (Piece.checkOwner(xOrigin, yOrigin) == "RED") and g.white_turn: # Check if moving the correct teams piece
                         print_error("Error. You can only move a piece that belongs to you.")
                     else:
                         break
@@ -86,11 +86,11 @@ def play_pvp():
                     print("Destination coordinates need to be different than the origin coordinates!") 
                 else:
                     xDest = int(destination_coordinates[1])
-                    yDest = global_vars.INDEX[destination_coordinates[0].upper()]
+                    yDest = g.INDEX[destination_coordinates[0].upper()]
                     break
         # TODO: Check if it's a legal move before moving
         if Piece.move(xOrigin, yOrigin, xDest, yDest):
-            white_turn = not global_vars.white_turn # Hand over tunr to other team
+            white_turn = not g.white_turn # Hand over tunr to other team
 
 
 def play_ai():
