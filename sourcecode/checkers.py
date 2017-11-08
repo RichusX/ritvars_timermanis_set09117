@@ -8,7 +8,7 @@ import re
 from colorama import Fore, Style, Back, init
 import board as Board
 import piece as Piece
-from settings import *
+from global_vars import *
 
 def clear():
     '''Clears the window by printing 30 blank lines'''

@@ -1,4 +1,4 @@
-from settings import *
+from global_vars import *
 
 #
 #   REMEMBER! WHEN CALLING game_board, Y comes BEFORE X !!!
