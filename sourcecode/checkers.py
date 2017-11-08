@@ -58,7 +58,12 @@ def play_pvp():
     while not finished:
         print_board()
         while True:
-            origin_coordinates = raw_input("Enter the piece you want to move e.g. \"F2\"\n>>")
+            if white_turn:
+                piece_hint = Fore.WHITE + "O" + Style.RESET_ALL
+            else:
+                piece_hint = Fore.RED + "O" + Style.RESET_ALL
+
+            origin_coordinates = raw_input("Enter the piece you want to move [%s] \n>>" % (piece_hint))
             if not re.match(coordinates_re, origin_coordinates):
                 print_error("Error. Invalid input.")
             else:
@@ -71,7 +76,6 @@ def play_pvp():
                         break
                 else:
                     print_error("Error. Invalid piece selected.")
-        # TODO: check if the piece selected belongs to the player
 
         while True:
             destination_coordinates = raw_input("Enter the corrdinates for the tile you want to move the piece to\n>>")
