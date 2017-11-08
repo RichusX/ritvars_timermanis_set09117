@@ -1,12 +1,12 @@
-from colorama import Style, Fore, init
+from colorama import Style, Fore
 from global_vars import *
 
-header = '     0   1   2   3   4   5   6   7'
-footer = '   +---+---+---+---+---+---+---+---+'
+HEADER = '     0   1   2   3   4   5   6   7'
+FOOTER = '   +---+---+---+---+---+---+---+---+'
 
 def print_board():
-    print(header)
-    print(footer)
+    print(HEADER)
+    print(FOOTER)
 
     for y in range(0, 8):
         to_print = chr(y + 97).upper() + '  '
@@ -22,4 +22,4 @@ def print_board():
                     to_print += '|   '
 
         print(to_print)
-        print(footer)
+        print(FOOTER)
