@@ -14,9 +14,13 @@ def print_board():
         for x in range(0, 9):
             if x <= 7 and y <= 7:
                 if g.game_board[y][x] == "X":
-                    to_print += '| ' + Fore.RED + "O" + Fore.RESET + " "
+                    to_print += '| ' + Fore.RED + "O" + Style.RESET_ALL + " "
                 elif g.game_board[y][x] == "O":
-                    to_print += '| ' + Fore.WHITE + "O" + Fore.RESET + " "
+                    to_print += '| ' + Fore.WHITE + "O" + Style.RESET_ALL + " "
+                elif g.game_board[y][x] == "XX":
+                    to_print += '| ' + Fore.RED + "X" + Style.RESET_ALL + " "
+                elif g.game_board[y][x] == "OO":
+                    to_print += '| ' + Fore.WHITE + "X" + Style.RESET_ALL + " "
                 else:
                     to_print += '|   '
             else:
