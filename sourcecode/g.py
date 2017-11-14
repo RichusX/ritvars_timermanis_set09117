@@ -1,3 +1,10 @@
+
+# Legend
+# X - Red piece
+# O - White piece
+# XX - Red king
+# OO - White king
+
 game_board = [
     [" ", "X", " ", "X", " ", "X", " ", "X"],
     ["X", " ", "X", " ", "X", " ", "X", " "],
