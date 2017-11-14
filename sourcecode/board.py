@@ -1,8 +1,9 @@
-from colorama import Style, Fore
+from colorama import Style, Fore, Back
 import g # Global variables
 
 HEADER = '     0   1   2   3   4   5   6   7'
 FOOTER = '   +---+---+---+---+---+---+---+---+'
+SEPERATOR = '---------------------------------'
 
 def print_board():
     print(HEADER)
@@ -23,3 +24,6 @@ def print_board():
 
         print(to_print)
         print(FOOTER)
+    print("\n%s"% (SEPERATOR))
+    print("Red Score: %s\nWhite score: %s" % (g.red_score, g.white_score))
+    print("%s\n" % (SEPERATOR))
